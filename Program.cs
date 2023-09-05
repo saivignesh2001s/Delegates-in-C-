@@ -47,6 +47,9 @@ namespace Delegates_in_C_
                     if (kt)
                     {
                         Console.WriteLine("You have successfully logged in");
+                        Console.WriteLine("Continue operations");
+                        ExampleDelegates();
+
                     }
                     else
                     {
@@ -70,6 +73,46 @@ namespace Delegates_in_C_
             
 
             Console.ReadLine();
+        }
+        public delegate void ArithmeticOps(int x,int y);
+         public static void ExampleDelegates()
+        {
+           Console.Write("Enter the first number: ");
+           int x=Convert.ToInt32(Console.ReadLine());   
+           Console.Write("Enter the second number: ");
+           int y=Convert.ToInt32(Console.ReadLine());
+
+            ArithmeticOps ps = new ArithmeticOps(Add);
+            ps += Sub;
+            ps += Mul;
+            ps+= Div;
+            ps(x, y);
+           
+        }
+        public static void Add(int x,int y)
+        {
+            Console.WriteLine($"Addition of two numbers are {x+y}");
+        }
+        public static void Sub(int x ,int y)
+        {
+            if (x > y) Console.WriteLine($"Subtraction of x from y {x-y}");
+            else Console.WriteLine($"Subtraction of y from x {y-x}");
+        }
+        public static void Mul(int x,int y)
+        {
+            Console.WriteLine($"Multiplication of x and y {x*y}");
+        }
+        public static void Div(int x,int y)
+        {
+            if (y!= 0)
+            {
+                Console.WriteLine($"Division from x by y {x/y}");
+
+            }
+            else
+            {
+                Console.WriteLine("Divide by 0 not possible");
+            }
         }
     }
 }
